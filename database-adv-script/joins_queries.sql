@@ -15,7 +15,7 @@ INNER JOIN users ON bookings.user_id = users.user_id;
 -- 2. LEFT JOIN: Properties and their reviews (including properties with no reviews)
 SELECT
     properties.property_id,
-    properties.name AS property_name,
+    properties.name,
     properties.location,
     reviews.review_id,
     reviews.rating,
@@ -23,6 +23,7 @@ SELECT
     reviews.created_at
 FROM properties
 LEFT JOIN reviews ON properties.property_id = reviews.property_id;
+
 
 -- 3. FULL OUTER JOIN: All users and all bookings (MySQL workaround)
 SELECT
