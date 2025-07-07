@@ -10,7 +10,8 @@ SELECT
     users.last_name,
     users.email
 FROM bookings
-INNER JOIN users ON bookings.user_id = users.user_id;
+INNER JOIN users ON bookings.user_id = users.user_id
+ORDER BY bookings.booking_id;
 
 -- 2. LEFT JOIN: Properties and their reviews (including properties with no reviews)
 SELECT
@@ -22,10 +23,10 @@ SELECT
     reviews.comment,
     reviews.created_at
 FROM properties
-LEFT JOIN reviews ON properties.property_id = reviews.property_id;
+LEFT JOIN reviews ON properties.property_id = reviews.property_id
+ORDER BY properties.property_id;
 
-
--- 3. FULL OUTER JOIN: All users and all bookings (MySQL workaround)
+-- 3. FULL OUTER JOIN (MySQL-compatible version using UNION)
 SELECT
     users.user_id,
     users.first_name,
@@ -48,4 +49,5 @@ SELECT
     bookings.start_date,
     bookings.status
 FROM bookings
-LEFT JOIN users ON bookings.user_id = users.user_id;
+LEFT JOIN users ON bookings.user_id = users.user_id
+ORDER BY user_id;
