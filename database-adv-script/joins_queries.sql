@@ -24,7 +24,7 @@ SELECT
 FROM properties
 LEFT JOIN reviews ON properties.property_id = reviews.property_id;
 
--- 3. FULL OUTER JOIN: All users and all bookings
+-- 3. FULL OUTER JOIN: All users and all bookings (MySQL workaround)
 SELECT
     users.user_id,
     users.first_name,
@@ -34,4 +34,17 @@ SELECT
     bookings.start_date,
     bookings.status
 FROM users
-FULL OUTER JOIN bookings ON users.user_id = bookings.user_id;
+LEFT JOIN bookings ON users.user_id = bookings.user_id
+
+UNION
+
+SELECT
+    users.user_id,
+    users.first_name,
+    users.last_name,
+    bookings.booking_id,
+    bookings.property_id,
+    bookings.start_date,
+    bookings.status
+FROM bookings
+LEFT JOIN users ON bookings.user_id = users.user_id;
