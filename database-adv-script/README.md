@@ -16,3 +16,11 @@ This file contains two SQL subqueries:
 2. **Correlated Subquery**: Selects all users who have made more than 3 bookings.
 
 Each query follows best practices for performance and clarity.
+
+
+# Aggregations and Window Functions
+
+This file contains:
+- A query using COUNT and GROUP BY to find how many bookings each user has made.
+- A query using RANK() as a window function to rank properties based on bookings.
+
